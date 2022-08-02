@@ -1,0 +1,21 @@
+Package: ABCutilities
+Type: Package
+Title: Generally useful functions used by multiple ABC packages.
+Version: 0.3.2
+Authors@R: person("Applied Bioinformatics Core", "Weill Cornell Medicine", 
+                  email = "abc@med.cornell.edu", role = c("aut", "cre"))
+Author: Applied Bioinformatics Core of Weill Cornell Medicine [aut, cre]
+Maintainer: Friederike Duendar <frd2007@med.cornell.edu>,
+            Paul Zumbo <paz2005@med.cornell.edu>
+Description: Functions for error checking and other useful things, including
+    numerous helper functions for our shiny apps.
+Imports: 
+    data.table
+Suggests:
+    BiocFileCache,
+    ggplot2,
+    grid
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.1.0
