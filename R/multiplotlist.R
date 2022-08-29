@@ -67,11 +67,11 @@ MultiPlotList <- function(plots, cols = 1, layout = NULL, title = NULL) {
         title,
         vp = grid::viewport(
           layout.pos.row = 1,
-          layout.pos.col = 1:ncol(layout)
+          layout.pos.col = seq_len(ncol(layout))
         )
       )
     }
-    for (i in 1:numPlots) {
+    for (i in seq_len(numPlots)) {
       # Get the i,j matrix positions of the regions that contain this subplot
       matchidx <- as.data.frame(which(layout == i, arr.ind = TRUE))
 

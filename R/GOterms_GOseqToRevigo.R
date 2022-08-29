@@ -205,7 +205,7 @@ txtFile2REVIGO <- function(infile,
   message(print(fname_out4))
   source(fname_out4)
 
-  if (!isTRUE(exists("revigo.data"))) {
+  if (!isTRUE(base::exists("revigo.data", inherits = FALSE))) {
     revigo.data <- NULL
   }
   return(revigo.data)
