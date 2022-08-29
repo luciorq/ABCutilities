@@ -1,21 +1,31 @@
-Package: ABCutilities
 Type: Package
-Title: Generally useful functions used by multiple ABC packages.
-Version: 0.3.2
-Authors@R: person("Applied Bioinformatics Core", "Weill Cornell Medicine", 
-                  email = "abc@med.cornell.edu", role = c("aut", "cre"))
+Package: ABCutilities
+Title: Generally useful functions used by multiple ABC packages
+Version: 0.3.3
+Authors@R: c(
+    person("Applied Bioinformatics Core", "Weill Cornell Medicine", , "abc@med.cornell.edu", role = c("aut", "cre")),
+    person("Lucio", "Rezende Queiroz", , "luciorqueiroz@gmail.com", role = "ctb",
+           comment = c(ORCID = "0000-0002-6090-1834"))
+  )
 Author: Applied Bioinformatics Core of Weill Cornell Medicine [aut, cre]
-Maintainer: Friederike Duendar <frd2007@med.cornell.edu>,
-            Paul Zumbo <paz2005@med.cornell.edu>
-Description: Functions for error checking and other useful things, including
-    numerous helper functions for our shiny apps.
-Imports: 
-    data.table
+Maintainer: Friederike Duendar <frd2007@med.cornell.edu>, Paul Zumbo
+    <paz2005@med.cornell.edu>
+Description: Functions for error checking and other useful things,
+    including numerous helper functions for our shiny apps.
+License: MIT + file LICENSE
+Imports:
+    data.table,
+    ggplot2,
+    rJava,
+    treemap,
+    viridis
 Suggests:
     BiocFileCache,
-    ggplot2,
-    grid
-License: MIT + file LICENSE
+    grid,
+    pheatmap,
+    RColorBrewer,
+    UpSetR
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 6.1.0
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.1

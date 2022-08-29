@@ -14,14 +14,14 @@ use Getopt::Long;
 my $GOrillaURL = "http://cbl-gorilla.cs.technion.ac.il/";
 
 my @organisms = qw(ARABIDOPSIS_THALIANA
-           SACCHAROMYCES_CEREVISIAE
-           CAENORHABDITIS_ELEGANS
-           DROSOPHILA_MELANOGASTER
-           DANIO_RERIO
-           HOMO_SAPIENS
-           MUS_MUSCULUS
-           RATTUS_NORVEGICUS
-         );
+                SACCHAROMYCES_CEREVISIAE
+                CAENORHABDITIS_ELEGANS
+                DROSOPHILA_MELANOGASTER
+                DANIO_RERIO
+                HOMO_SAPIENS
+                MUS_MUSCULUS
+                RATTUS_NORVEGICUS
+    );
 my %organisms; @organisms{@organisms} = (1) x @organisms;
 my $organism = "MUS_MUSCULUS";
 
@@ -52,7 +52,7 @@ my $result = GetOptions("organism=s" => \$organism,
                 "includedups!" => \$includedups,
                 "fast!" => \$fast,
                 "outputdir=s" => \$outputDir,
-               );
+    );
 
 die "No such organism $organism\n" unless $organisms{$organism};
 die "No such runmode $runmode\n" unless $runmodes{$runmode};
@@ -100,8 +100,8 @@ do $mech->get($base)
     until $mech->response->base() ne $base;
 
 my %pages = (proc => "PROCESS",
-         func => "FUNCTION",
-         comp => "COMPONENT");
+        func => "FUNCTION",
+        comp => "COMPONENT");
 
 my @pages = $ontology eq "all" ? values(%pages) : $pages{$ontology};
 
@@ -120,12 +120,12 @@ for my $page (@pages) {
         close $outputFh;
         my $pngUri = "${GOrillaURL}/GOrilla/${id}/GO${page}.png";
         my $pngFn = "$outputDir/GO${page}.png";
-        $mech->get($pngUri, ':content_file' => $pngFn);  
+        $mech->get($pngUri, ':content_file' => $pngFn);
     }
 
     my $resUri = "${GOrillaURL}/GOrilla/${id}/GOResults${page}.html";
     my $resFn = "$outputDir/GOResults${page}.html";
-    $mech->get($resUri, ':content_file' => $resFn);  
+    $mech->get($resUri, ':content_file' => $resFn);
 }
 
 print STDERR "trying to retrieve root results record...\n";
