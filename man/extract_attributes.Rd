@@ -7,34 +7,41 @@
 extract_attributes(gtf_attributes, att_of_interest)
 }
 \arguments{
-\item{gtf_attributes}{single line of GTF attribute column, e.g. genes$attributes[1]}
+\item{gtf_attributes}{single line of GTF attribute column,
+e.g. \code{genes$attributes[1]}}
 
-\item{att_of_interest}{string indicating which attribute value should be extracted,
-one of: c("gene_id", "transcript_id","")}
+\item{att_of_interest}{string indicating which attribute value should be
+extracted,
+one of: \code{c("gene_id", "transcript_id", "")}}
 }
 \description{
 This is a useful function to extract certain details from the
 attributes column of a GTF file, e.g. gene names, gene IDs etc.
-Anything that is indicated in the gtf file within a <tag> <value> pair
+Anything that is indicated in the gtf file within a \emph{\code{tag}} \emph{\code{value}} pair
 can be extracted - the user has to indicate the name of the tag as a string
 and the corresponding value will be returned.
 }
 \details{
-Splits the attribute field of a GTF file line and returns just the 
+Splits the attribute field of a GTF file line and returns just the
 value for the attribute of interest.
 }
 \examples{
 \dontrun{
 genes <- fread("gencode.v23.basic.lincRNA.gtf")
-names(genes) <- c("chr","source","type","start","end","score","strand","phase","attributes")
+names(genes) <- c(
+  "chr", "source", "type", "start", "end",
+  "score", "strand", "phase", "attributes"
+)
 # remove the columns from the GTF file you're not going to be interested in
 genes$score <- NULL
 genes$phase <- NULL
 # focus, for example, only on entries of type "gene" (this will significantly
-shorten the runtime of the \\code{extract_attributes} call)
+# shorten the runtime of the \code{extract_attributes} call)
 genes <- genes[type == "gene"]
 # extract the values for the attributes of interest (here: "gene_id")
-genes$gene_id <- unlist(lapply(genes$attributes, extract_attributes, "gene_id"))
+genes$gene_id <- unlist(
+  lapply(genes$attributes, extract_attributes, "gene_id")
+)
 }
 
 }

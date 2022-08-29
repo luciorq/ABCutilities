@@ -7,15 +7,18 @@
 choose_faceting(row_facet, col_facet, wrap = FALSE)
 }
 \arguments{
-\item{row_facet}{name (or NULL) of the factor used for assigning the row facet}
+\item{row_facet}{name (or NULL) of the factor used for assigning the row
+facet}
 
-\item{col_facet}{name (or NULL) of the factor used for assigning the column facet}
+\item{col_facet}{name (or NULL) of the factor used for assigning the column
+facet}
 
-\item{wrap}{Boolean indicating whether facet_grid or facet_wrap should be used.
+\item{wrap}{Boolean indicating whether facet_grid or facet_wrap should be
+used.
 Default: FALSE will return entries fit for facet_grid.}
 }
 \value{
-Generates a \code{list} with a vector of labels that will be passed 
+Generates a `list`` with a vector of labels that will be passed
 to the plotting function ("metainfo") and the individual row and column
 faceting factors ("fac_r","fac_c").
 }
@@ -24,12 +27,16 @@ Parse the faceting information
 }
 \examples{
 \dontrun{
-fc_info <- choose_faceting(row_facet = input$facet_by_row, col_facet = input$facet_by_col)
+fc_info <- choose_faceting(
+  row_facet = input$facet_by_row,
+  col_facet = input$facet_by_col
+)
 P <- scABC:::plot_reduced_dim.object(sce,
-                                     X = pca$cells[, "PC1"], Y = pca$cells[, "PC2"],
-                                     exprs_values =  input$expr,
-                                     add_cell_info = fc_info$metainfo)
- gg <- P + facet_grid(as.formula(paste(fc_info$fac_r, "~", fc_info$fac_c)))
+  X = pca$cells[, "PC1"], Y = pca$cells[, "PC2"],
+  exprs_values = input$expr,
+  add_cell_info = fc_info$metainfo
+)
+gg <- P + facet_grid(as.formula(paste(fc_info$fac_r, "~", fc_info$fac_c)))
 }
 
 }

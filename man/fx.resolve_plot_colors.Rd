@@ -14,14 +14,14 @@ fx.resolve_plot_colors(plot_out, colour_by, colour_by_name, fill = FALSE)
 \item{colour_by_name}{string indicating the title/name for \code{colour_by},
 e.g. the name of a gene}
 
-\item{fill}{Boolean, default: \code{FALSE}}
+\item{fill}{Boolean, default: 'FALSE'}
 }
 \value{
 \code{ggplot2} object with adjusted coloring scheme
 }
 \description{
 Wrapper around \code{fx.get_palette_ABC} that checks the numbers
-and types of coloring variables that are being used and tries to return a 
+and types of coloring variables that are being used and tries to return a
 sensible color scheme. The colors are pre-defined in \code{fx.get_palette_ABC}.
 }
 \details{

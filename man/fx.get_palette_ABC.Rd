@@ -6,6 +6,9 @@
 \usage{
 fx.get_palette_ABC(palette_name)
 }
+\arguments{
+\item{palette_name}{Name of the color palette.}
+}
 \value{
 vector of color names
 }
@@ -13,7 +16,7 @@ vector of color names
 This function simply supplies pre-defined color palettes.
 }
 \details{
-Based on \code{scater}'s defaults, but with significant changes to the
+Based on \code{scater} defaults, but with significant changes to the
 standard colors that were bing used
 }
 \seealso{

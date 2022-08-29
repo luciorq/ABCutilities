@@ -9,20 +9,9 @@ check_columns(which_names, input, input_name, function_name)
 check_columns(which_names, input, input_name, function_name)
 }
 \arguments{
-\item{which_names}{Column names to check, e.g. c("peaks", "genes")}
+\item{which_names}{Column names to check, e.g. \code{c("peaks", "genes")}}
 
-\item{input}{The names() of this will be checked.}
-
-\item{input_name}{Name of the input, e.g. "start_params" just to make it
-identifiable if an error message is returned.}
-
-\item{function_name}{Name of function for which this test is carried out.
-Again, just to make the returning error message a bit more readable. This
-helps with debugging if you're wrapping many functions within each other.}
-
-\item{which_names}{Column names to check, e.g. c("peaks", "genes")}
-
-\item{input}{The names() of this will be checked.}
+\item{input}{The \code{names()} of this will be checked.}
 
 \item{input_name}{Name of the input, e.g. "start_params" just to make it
 identifiable if an error message is returned.}
@@ -33,10 +22,10 @@ helps with debugging if you're wrapping many functions within each other.}
 }
 \value{
 Returns an error and stop signal if entries of \code{which_names}
- are missing in the \code{input}.
+are missing in the \code{input}.
 
 Returns an error and stop signal if entries of \code{which_names}
- are missing in the \code{input}.
+are missing in the \code{input}.
 }
 \description{
 Check for the presence of named columns
@@ -45,12 +34,17 @@ Check for the presence of named columns
 }
 \examples{
 \dontrun{
-check_columns( c("cells", "sample", "condition"),
-               long_df, "long_df", "plot_profile")
+check_columns(
+  c("cells", "sample", "condition"),
+  long_df, "long_df", "plot_profile"
+)
 }
+
 \dontrun{
-check_columns( c("cells", "sample", "condition"),
-               long_df, "long_df", "plot_profile")
+check_columns(
+  c("cells", "sample", "condition"),
+  long_df, "long_df", "plot_profile"
+)
 }
 
 }

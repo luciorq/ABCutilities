@@ -19,7 +19,7 @@ Supply more than 6 somewhat meaningful shapes
 }
 \details{
 The ggplot2 default setting will complain about having more than 6
-different factors assigned to shape. This function assigns 12 shapes (if 
-there's more than 6 factors in \code{shape_by}), trying to find a good order 
+different factors assigned to shape. This function assigns 12 shapes (if
+there's more than 6 factors in \code{shape_by}), trying to find a good order
 that will still allow for differentiations.
 }

@@ -23,14 +23,15 @@ Plot multiple ggplot2 objects on one page
 \dontrun{
 label_list <- list(sample = "sample", replicate = "technical_replicate")
 ## make a list of ggplot2 objects
-pl <- lapply(seq_along(label_list),  function(i){
-       P <-  draw_PCA_results(sceset.filt,
-                      tsne_mg$all$V2, tsne_mg$all$V3,
-                      exprs_values = "log10magic",
-                      colour_by = names(label_list[i]))
-       P <- P + ggtitle(label_list[[i]]) + theme_bw(base_size = 16)
-     })
- ## plot them all on the same page
- MultiPlotList(pl, cols = 2, title = "tsne log10(magic)")
+pl <- lapply(seq_along(label_list), function(i) {
+  P <- draw_PCA_results(sceset.filt,
+    tsne_mg$all$V2, tsne_mg$all$V3,
+    exprs_values = "log10magic",
+    colour_by = names(label_list[i])
+  )
+  P <- P + ggtitle(label_list[[i]]) + theme_bw(base_size = 16)
+})
+## plot them all on the same page
+MultiPlotList(pl, cols = 2, title = "tsne log10(magic)")
 }
 }

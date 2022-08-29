@@ -6,8 +6,11 @@
 \usage{
 n2n(x)
 }
+\arguments{
+\item{x}{value to be replaced.}
+}
 \description{
-Sometimes, it is more convenient to allow the user to select 
+Sometimes, it is more convenient to allow the user to select
 "none" instead of setting a variable to NULL. Within the scripts, however,
 it is often easier to handle instances of NULL than of the string "none".
 This function is supposed to help with that as it returns NULL if x is either

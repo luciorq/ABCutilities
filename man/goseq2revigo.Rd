@@ -4,38 +4,55 @@
 \alias{goseq2revigo}
 \title{Turn the GOSEQ result into REVIGO output}
 \usage{
-goseq2revigo(goseq_res, q_cutoff = 0.05, analysis_name = NULL,
-  out_path = NULL, python_path = "/usr/local/bin/python")
+goseq2revigo(
+  goseq_res,
+  q_cutoff = 0.05,
+  analysis_name = NULL,
+  out_path = NULL,
+  python_path = "/usr/local/bin/python"
+)
 }
 \arguments{
 \item{goseq_res}{result file of a goseq analysis, must contain those columns:
 c("over_represented_pvalue","ontology","category").}
 
-\item{analysis_name}{a label for the analysis, e.g. "DB_condition", or "cluster1"}
+\item{q_cutoff}{FDR corrected p-value cutoff. Default: 0.05.}
+
+\item{analysis_name}{a label for the analysis,
+e.g. "DB_condition", or "cluster1"}
 
 \item{out_path}{path to where the (temporary) results are to be stored}
 
-\item{python_path}{Define which python installation should be used to run the 
-REVIGO script. Default: "/usr/local/bin/python"}
+\item{python_path}{Define which python installation should be used to run the
+REVIGO script.
+Default: "/usr/local/bin/python".}
 }
 \description{
 Turn the GOSEQ result into REVIGO output
 }
 \details{
-The REVIGO API will be accessed with the help of a python script that
-is part of the ABCutilities package. This function needs python and sed;
-make sure the Python path is the correct one. If NULL, it will use the output
-of \code{system("which python")}, which may not be approriate. Default: "/usr/local/bin/python".
+The REVIGO API will be accessed with the help of a python script
+that is part of the ABCutilities package. This function needs python and
+sed; make sure the Python path is the correct one. If NULL,
+it will use the output of \code{system("which python")},
+which may not be approriate. Default: "/usr/local/bin/python".
 }
 \examples{
 \dontrun{
-testingrev <- goseq2revigo(GO.wall, q_cutoff = 0.05,
-                           analysis_name = "test", out_path = "data/revigo/")
+testingrev <- goseq2revigo(GO.wall,
+  q_cutoff = 0.05,
+  analysis_name = "test",
+  out_path = "data/revigo/"
+)
 ## create treemap
-REVIGO_treemap(revigo.data = testingrev$testBP, col_palette = "Set3", title = "testing")
+REVIGO_treemap(
+  revigo.data = testingrev$testBP,
+  col_palette = "Set3",
+  title = "testing"
+)
 }
 
 }
 \seealso{
-\code{\link{txtFile2REVIGO}}
+\code{\link[=txtFile2REVIGO]{txtFile2REVIGO()}}
 }

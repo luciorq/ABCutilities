@@ -7,7 +7,7 @@
 get_legend(plot)
 }
 \arguments{
-\item{plot}{A \code{ggplot} that was created with a legend}
+\item{plot}{A \code{ggplot} object that was created with a legend}
 }
 \value{
 A \code{gtable} object holding just the legend
@@ -16,14 +16,24 @@ A \code{gtable} object holding just the legend
 This function extracts just the legend from a \code{ggplot}.
 }
 \details{
-From \url{https://stackoverflow.com/questions/11883844/inserting-a-table-under-the-legend-in-a-ggplot2-histogram}
+From
+\url{https://stackoverflow.com/questions/11883844/inserting-a-table-under-the-legend-in-a-ggplot2-histogram}
 }
 \examples{
-p1 <- ggplot(mtcars, aes(mpg, disp)) + geom_line()
-plot.mpg <- ggplot(mpg, aes(x = cty, y = hwy, colour = factor(cyl))) + geom_point(size=2.5)
+p1 <- ggplot2::ggplot(
+  datasets::mtcars,
+  ggplot2::aes(mpg, disp)
+) +
+  ggplot2::geom_line()
+plot.mpg <- ggplot2::ggplot(
+  ggplot2::mpg,
+  ggplot2::aes(x = cty, y = hwy, colour = factor(cyl))
+) +
+  ggplot2::geom_point(size = 2.5)
 legend <- get_legend(plot.mpg)
 # plot the plot
-plot.mpg <- plot.mpg + theme(legend.position='none')
+plot.mpg <- plot.mpg + ggplot2::theme(legend.position = "none")
 # plot the legend
-grid.draw(legend)
+grid::grid.draw(legend)
+
 }

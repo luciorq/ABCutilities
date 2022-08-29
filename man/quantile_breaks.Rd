@@ -21,11 +21,14 @@ Function from Kamil Slowikowski (\url{https://slowkow.com/notes/heatmap-tutorial
 }
 \examples{
 hm_mat <- matrix(rnorm(200), 20, 10)
-hm_mat[c(100,101)] <- max(hm_mat) + 1000
+hm_mat[c(100, 101)] <- max(hm_mat) + 1000
 
 mat_breaks <- quantile_breaks(hm_mat, n = 10)
-pheatmap(hm_mat,
-         breaks = mat_breaks,
-         color = colorRampPalette(rev(brewer.pal(n = 7, name = "RdYlBu")))(length(mat_breaks) - 1))
+pheatmap::pheatmap(hm_mat,
+  breaks = mat_breaks,
+  color = grDevices::colorRampPalette(
+    rev(RColorBrewer::brewer.pal(n = 7, name = "RdYlBu"))
+  )(length(mat_breaks) - 1)
+)
 
 }

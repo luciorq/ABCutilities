@@ -10,24 +10,22 @@ make_upsetr_input(input)
 }
 \arguments{
 \item{input}{list}
-
-\item{input}{list}
 }
 \value{
-data.frame where the column names correspond to the names of the vectors
-of the list
+\code{data.frame} where the column names correspond to the names
+of the vectors of the list
 
-data.frame where the column names correspond to the names of the vectors
-of the list
+\code{data.frame} where the column names correspond
+to the names of the vectors of the list
 }
 \description{
-\code{UpSetR} requires a data.frame of zeros and ones, this
-function produces this from a list of, e.g., gene names for which the inter-
-sections are to be determined.
+\code{UpSetR} requires a \code{data.frame} of zeros and ones,
+this function produces this from a list of,
+e.g., gene names for which the intersections are to be determined.
 
 \code{UpSetR} requires a data.frame of zeros and ones, this
-function produces this from a list of, e.g., gene names for which the inter-
-sections are to be determined.
+function produces this from a list of, e.g.
+gene names for which the inter-sections are to be determined.
 }
 \details{
 Very much the same as \code{UpSetR::fromList()}, the only difference
@@ -37,15 +35,20 @@ Very much the same as \code{UpSetR::fromList()}, the only difference
 being that I am adding rownames to the output.
 }
 \examples{
-listInput <- list(one = c(1, 2, 3, 5, 7, 8, 11, 12, 13),
-                 two = c(1, 2, 4, 5, 10),
-                 three = c(1, 5, 6, 7, 8, 9, 10, 12, 13))
+listInput <- list(
+  one = c(1, 2, 3, 5, 7, 8, 11, 12, 13),
+  two = c(1, 2, 4, 5, 10),
+  three = c(1, 5, 6, 7, 8, 9, 10, 12, 13)
+)
 ups_input <- make_upsetr_input(listInput)
-upset(ups_input, sets = names(ups_input))
-listInput <- list(one = c(1, 2, 3, 5, 7, 8, 11, 12, 13),
-                 two = c(1, 2, 4, 5, 10),
-                 three = c(1, 5, 6, 7, 8, 9, 10, 12, 13))
+UpSetR::upset(ups_input, sets = names(ups_input))
+
+listInput <- list(
+  one = c(1, 2, 3, 5, 7, 8, 11, 12, 13),
+  two = c(1, 2, 4, 5, 10),
+  three = c(1, 5, 6, 7, 8, 9, 10, 12, 13)
+)
 ups_input <- make_upsetr_input(listInput)
-upset(ups_input, sets = names(ups_input))
+UpSetR::upset(ups_input, sets = names(ups_input))
 
 }

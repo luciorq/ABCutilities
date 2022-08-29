@@ -4,18 +4,21 @@
 \alias{load_RDSdata_from_Box}
 \title{Download and locally cache an RDS file that's stored on a website}
 \usage{
-
-  load_RDSdata_from_Box(shared_link = "https://wcm.box.com/shared/static/mmf98o464n94fdh78x14sbwo7ts56ukq.rda",
-  data_name = NULL, cache_path = NULL, check_for_update = FALSE)
+load_RDSdata_from_Box(
+  shared_link = "https://wcm.box.com/shared/static/mmf98o464n94fdh78x14sbwo7ts56ukq.rda",
+  data_name = NULL,
+  cache_path = NULL,
+  check_for_update = FALSE
+)
 }
 \arguments{
 \item{shared_link}{The URL for the file as a string. NOTE: This should be the
-\emph{direct} link, i.e. it should end with ".rds" (!)}
+\strong{direct link}, i.e. it should end with ".rds" (!)}
 
-\item{data_name}{A customized name that may be used to more easily refer to 
+\item{data_name}{A customized name that may be used to more easily refer to
 the cached data (\code{rname} parameter of \code{BiocFileCache} functions),
 e.g. "SCE2019" -- any kind of string will work, but it's important
-to make a note of this name for reloading the data next time, otherwise the 
+to make a note of this name for reloading the data next time, otherwise the
 data set will be downloaded again if there's a mismatch with the name.
 If set to NULL (default), the \code{rname} in the cache will correspond to the
 url indicated via \code{shared_link}.}
@@ -31,17 +34,21 @@ The final command here is \code{readRDS()}, so you should be assigning
 the result of this function to an object name in your environment.
 }
 \description{
-Using the library \code{BiocFileCache}, this function takes as 
-input the direct link to a RDS (!) file, downloads it and stashes it in a 
+Using the library \code{BiocFileCache}, this function takes as
+input the direct link to a RDS (!) file, downloads it and stashes it in a
 local directory from where it can be retrieved (using this exact function) in
 a later session. I.e. if the data has already been downloaded, it won't be down-
 loaded again.
 }
 \details{
-Based on instructions from the BiocFileCache vignette: \url{https://bioconductor.org/packages/release/bioc/vignettes/BiocFileCache/inst/doc/BiocFileCache.html#local-cache-of-an-internet-resource}
+Based on instructions from the
+\href{https://bioconductor.org/packages/release/bioc/vignettes/BiocFileCache/inst/doc/BiocFileCache.html#local-cache-of-an-internet-resource}{BiocFileCache vignette}
 }
 \examples{
-direct_link <- "https://wcm.box.com/shared/static/4887keeu77eskmdotve1sm7n6u7udckg.rds"
-testingsce <- load_RDSdata_from_Box(shared_link = direct_link, data_name = "testRDS")
+obj_name <- "4887keeu77eskmdotve1sm7n6u7udckg.rds"
+direct_link <- paste0("https://wcm.box.com/shared/static/", obj_name)
+testingsce <- load_RDSdata_from_Box(
+  shared_link = direct_link, data_name = "testRDS"
+)
 
 }

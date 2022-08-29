@@ -4,8 +4,7 @@
 \alias{select_factors}
 \title{Select factors of interest based on some customized criteria}
 \usage{
-select_factors(in.df, max_nlevel = Inf, factor_class = NULL,
-  keep_class = TRUE)
+select_factors(in.df, max_nlevel = Inf, factor_class = NULL, keep_class = TRUE)
 }
 \arguments{
 \item{in.df}{data.frame variant where the columns represent the different
@@ -14,9 +13,9 @@ variables/factors that need to be checked, e.g. \code{colData(sce)}.}
 \item{max_nlevel}{integer specifying the maximum number of levels that are
 allowed. Default: Inf}
 
-\item{factor_class}{specify the class(es) of the factor that you either want to
-include or exclude, depending on the setting of \code{keep_class}. Default
-(NULL) will not check the class.}
+\item{factor_class}{specify the class(es) of the factor that you either
+want to include or exclude, depending on the setting of \code{keep_class}.
+Default (NULL) will not check the class.}
 
 \item{keep_class}{will only come into effect when \code{factor_class} is not
 NULL; default setting (TRUE) will \strong{retain} all factors that correspond

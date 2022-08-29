@@ -6,6 +6,15 @@
 \usage{
 fx.retrieve_GOrilla_results(GOrilla_link, TYPE, out_path, analysis_name)
 }
+\arguments{
+\item{GOrilla_link}{GOrilla URL.}
+
+\item{TYPE}{Type of GOrilla result.}
+
+\item{out_path}{Path to save generated GOrilla output.}
+
+\item{analysis_name}{Name to use for analysis run.}
+}
 \description{
 This function handles the different types of entries that can be
 supplied to \code{GOrilla_link}.
