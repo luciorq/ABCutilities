@@ -1,17 +1,22 @@
 #' Add user-specified colors to facet grid strips
 #'
-#' @description This function is useful to assign specific colors to the background of the facet_grid labels.
+#' @description This function is useful to assign specific colors to the
+#'   background of the facet_grid labels.
 #'
-#' @details See \url{https://stackoverflow.com/questions/53455092/r-ggplot2-change-colour-of-font-and-background-in-facet-strip} for details.
-#' This routine will only work with facet_grid (not facet_wrap) and
-#' \code{in_plot} should *not* have the background color stripped from it via
-#' the \code{theme} setting
+#' @details See
+#'   <https://stackoverflow.com/questions/53455092/r-ggplot2-change-colour-of-font-and-background-in-facet-strip>
+#'   for details.
+#'   This routine will only work with facet_grid (not facet_wrap) and
+#'   `in_plot` should *not* have the background color stripped from it via
+#'   the `theme` setting
 #'
 #' @param in_plot ggplot2 object generated with facet_grid (see examples).
-#' @param facet_cols vector of color names, e.g. c("red","green","blue"). Its length should correspond to the factor that was used to assign the facet_grid with.
+#' @param facet_cols vector of color names, e.g. c("red","green","blue").
+#'   Its length should correspond to the factor that was used to assign the
+#'   `facet_grid` with.
 #'
 #' @examples \dontrun{
-#' ## generate base plot
+#' # generate base plot
 #' Pp <- ggplot(tmp2, aes(x = HPCA.main, y = N)) +
 #'   geom_bar(stat = "identity", aes(fill = condition)) +
 #'   scale_fill_manual(values = condition_cols) +
@@ -28,10 +33,9 @@
 #'
 #' @export
 color_grid_facet_bg <- function(in_plot, facet_cols) {
-  # based on: https://stackoverflow.com/questions/53455092/r-ggplot2-change-colour-of-font-and-background-in-facet-strip
-  require(grid)
+  requireNamespace("grid")
   ## GRAB THE STRIP DEFINITIONS
-  Pg <- ggplot_gtable(ggplot_build(in_plot))
+  Pg <- ggplot2::ggplot_gtable(ggplot2::ggplot_build(in_plot))
   strips <- which(grepl("strip-", Pg$layout$name))
   fills <- facet_cols
   k <- 1
@@ -43,30 +47,39 @@ color_grid_facet_bg <- function(in_plot, facet_cols) {
     Pg$grobs[[i]]$grobs[[1]]$children[[j]]$gp$fill <- fills[k]
     k <- k + 1
   }
-  grid.draw(Pg)
+  grid::grid.draw(Pg)
 }
 
 
 #' Retrieve the legend of a plot
 #'
-#' @description This function extracts just the legend from a \code{ggplot}.
+#' @description This function extracts just the legend from a `ggplot`.
 #'
-#' @param plot A \code{ggplot} that was created with a legend
-#' @return A \code{gtable} object holding just the legend
-#' @details From \url{https://stackoverflow.com/questions/11883844/inserting-a-table-under-the-legend-in-a-ggplot2-histogram}
+#' @param plot A `ggplot` object that was created with a legend
+#' @return A `gtable` object holding just the legend
+#' @details From
+#'   <https://stackoverflow.com/questions/11883844/inserting-a-table-under-the-legend-in-a-ggplot2-histogram>
 #'
 #' @examples
-#' p1 <- ggplot(mtcars, aes(mpg, disp)) +
-#'   geom_line()
-#' plot.mpg <- ggplot(mpg, aes(x = cty, y = hwy, colour = factor(cyl))) +
-#'   geom_point(size = 2.5)
+#' p1 <- ggplot2::ggplot(
+#'   datasets::mtcars,
+#'   ggplot2::aes(mpg, disp)
+#' ) +
+#'   ggplot2::geom_line()
+#' plot.mpg <- ggplot2::ggplot(
+#'   ggplot2::mpg,
+#'   ggplot2::aes(x = cty, y = hwy, colour = factor(cyl))
+#' ) +
+#'   ggplot2::geom_point(size = 2.5)
 #' legend <- get_legend(plot.mpg)
 #' # plot the plot
-#' plot.mpg <- plot.mpg + theme(legend.position = "none")
+#' plot.mpg <- plot.mpg + ggplot2::theme(legend.position = "none")
 #' # plot the legend
-#' grid.draw(legend)
+#' grid::grid.draw(legend)
+#'
+#' @export
 get_legend <- function(plot) {
-  tmp <- ggplot_gtable(ggplot_build(a.gplot))
+  tmp <- ggplot2::ggplot_gtable(ggplot2::ggplot_build(plot))
   leg <- which(sapply(tmp$grobs, function(x) x$name) == "guide-box")
   legend <- tmp$grobs[[leg]]
   return(legend)
@@ -126,7 +139,7 @@ fx.resolve_plot_shapes <- function(plot_in, shape_by) {
     if (fill_na > 0) {
       our_shps <- c(our_shps, rep(NA, fill_na))
     }
-    plot_out <- plot_out + scale_shape_manual(values = our_shps)
+    plot_out <- plot_out + ggplot2::scale_shape_manual(values = our_shps)
   }
 
   return(plot_out)
@@ -134,21 +147,21 @@ fx.resolve_plot_shapes <- function(plot_in, shape_by) {
 
 #' Get nice plotting color schemes for very general color variables
 #'
-#' @description Wrapper around \code{fx.get_palette_ABC} that checks the numbers
+#' @description Wrapper around `fx.get_palette_ABC` that checks the numbers
 #' and types of coloring variables that are being used and tries to return a
-#' sensible color scheme. The colors are pre-defined in \code{fx.get_palette_ABC}.
+#' sensible color scheme. The colors are pre-defined in `fx.get_palette_ABC`.
 #'
 #' @details This function is based on a very similar function in the scater package.
 #'
 #' @param plot_out ggplot2 object
-#' @param colour_by vector of values that determine the coloring of \code{plot_out}
-#' @param colour_by_name string indicating the title/name for \code{colour_by},
+#' @param colour_by vector of values that determine the coloring of `plot_out`
+#' @param colour_by_name string indicating the title/name for `colour_by`,
 #' e.g. the name of a gene
-#' @param fill Boolean, default: \code{FALSE}
+#' @param fill Boolean, default: 'FALSE'
 #'
-#' @return \code{ggplot2} object with adjusted coloring scheme
+#' @return `ggplot2` object with adjusted coloring scheme
 #'
-#' @seealso \code{fx.get_palette_ABC}
+#' @seealso `fx.get_palette_ABC`
 #'
 #' @export
 #'
@@ -164,7 +177,7 @@ fx.resolve_plot_colors <- function(plot_out, colour_by, colour_by_name,
   if (fill) { ## routine for fill
     if (is.numeric(colour_by)) {
       # plot_out <- plot_out + viridis::scale_fill_viridis(name = leg_title)
-      plot_out <- plot_out + scale_color_gradient(
+      plot_out <- plot_out + ggplot2::scale_color_gradient(
         low = "grey90",
         high = "firebrick3",
         name = leg_title
@@ -172,13 +185,13 @@ fx.resolve_plot_colors <- function(plot_out, colour_by, colour_by_name,
     } else {
       nlevs_colour_by <- nlevels(as.factor(colour_by))
       if (nlevs_colour_by <= 14) {
-        plot_out <- plot_out + scale_fill_manual(
+        plot_out <- plot_out + ggplot2::scale_fill_manual(
           values = fx.get_palette_ABC("paired_pal"),
           name = leg_title
         )
       } else {
         if (nlevs_colour_by > 14 && nlevs_colour_by <= 20) {
-          plot_out <- plot_out + scale_fill_manual(
+          plot_out <- plot_out + ggplot2::scale_fill_manual(
             values = fx.get_palette_ABC("tableau20"),
             name = leg_title
           )
@@ -193,7 +206,7 @@ fx.resolve_plot_colors <- function(plot_out, colour_by, colour_by_name,
   } else { ## routine for color
     if (is.numeric(colour_by)) {
       # plot_out <- plot_out + viridis::scale_color_viridis(name = leg_title)
-      plot_out <- plot_out + scale_color_gradient(
+      plot_out <- plot_out + ggplot2::scale_color_gradient(
         low = "grey90",
         high = "firebrick3",
         name = leg_title
@@ -201,13 +214,13 @@ fx.resolve_plot_colors <- function(plot_out, colour_by, colour_by_name,
     } else {
       nlevs_colour_by <- nlevels(as.factor(colour_by))
       if (nlevs_colour_by <= 14) {
-        plot_out <- plot_out + scale_colour_manual(
+        plot_out <- plot_out + ggplot2::scale_colour_manual(
           values = fx.get_palette_ABC("paired_pal"),
           name = leg_title
         )
       } else {
         if (nlevs_colour_by > 14 && nlevs_colour_by <= 20) {
-          plot_out <- plot_out + scale_colour_manual(
+          plot_out <- plot_out + ggplot2::scale_colour_manual(
             values = fx.get_palette_ABC("tableau20"),
             name = leg_title
           )
@@ -228,27 +241,34 @@ fx.resolve_plot_colors <- function(plot_out, colour_by, colour_by_name,
 #'
 #' @description This function simply supplies pre-defined color palettes.
 #'
-#' @details Based on \code{scater}'s defaults, but with significant changes to the
+#' @details Based on `scater` defaults, but with significant changes to the
 #' standard colors that were bing used
+#'
+#' @param palette_name Name of the color palette.
 #'
 #' @return vector of color names
 #'
-#' @seealso \code{fx.resolve_plot_colors}
+#' @seealso `fx.resolve_plot_colors`
 fx.get_palette_ABC <- function(palette_name) {
-  switch(palette_name,
-    # tableau20 = c("#1F77B4", "#AEC7E8", "#FF7F0E", "#FFBB78", "#2CA02C",
-    #               "#98DF8A", "#D62728", "#FF9896", "#9467BD", "#C5B0D5",
-    #               "#8C564B", "#C49C94", "#E377C2", "#F7B6D2", "#7F7F7F",
-    #               "#C7C7C7", "#BCBD22", "#DBDB8D", "#17BECF", "#9EDAE5"),
-    # tableau10medium = c("#729ECE", "#FF9E4A", "#67BF5C", "#ED665D",
-    #                     "#AD8BC9", "#A8786E", "#ED97CA", "#A2A2A2",
-    #                     "#CDCC5D", "#6DCCDA"),
+  switch(
+    EXPR = palette_name,
     tableau10medium = c(
-      "#34B20D", "#FFAE18", "#be2f00", "#73FFC3", "#0D14B2",
-      "#8EB20E", "#FF81DE", "#FFFF00", "#0CCC9C", "#656BB2"
+      "#34B20D",
+      "#FFAE18",
+      "#BE2F00",
+      "#73FFC3",
+      "#0D14B2",
+      "#8EB20E",
+      "#FF81DE",
+      "#FFFF00",
+      "#0CCC9C",
+      "#656BB2"
     ),
+    # originally from RColorBrewer::brewer.pal(12,  "Paired"),
     paired_pal = c(
-      "#B1E2F9", "limegreen", "grey30",
+      "#B1E2F9",
+      "limegreen",
+      "grey30",
       "#FFC914", # light orange # FDBF6F
       "#0066E2", # darkish blue #1F78B4,
       "#FC71E9", # now: pink; light red #FB9A99,
@@ -261,8 +281,7 @@ fx.get_palette_ABC <- function(palette_name) {
       "#FFFF99", # light yellow #FFFF99
       "#B15928" # brown#B15928
     ),
-    # originally from RColorBrewer::brewer.pal(12,  "Paired"),
-    divergent = c("#A6CEE3", "limegreen", "grey30", ),
+    divergent = c("#A6CEE3", "limegreen", "grey30"),
     tableau20 = c(
       "#34B20D", "#FFAE18", "#be2f00", "#73FFC3", "#0D14B2",
       "#8EB20E", "#FF81DE", "#FFFF00", "#0CCC9C", "#656BB2", # tableau10medium
