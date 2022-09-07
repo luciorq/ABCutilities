@@ -13,6 +13,18 @@ with focus on genomics and bioinformatics.
 
 ## Installation
 
+The recommended way to install this package is through the R-Universe repository
+
+``` r
+install.packages(
+   "ABCutilities",
+   repos = c(
+    luciorq = "https://luciorq.r-universe.dev",
+    getOption("repos")
+  )
+)
+```
+
 You can install the development version of ABCutilities from [GitHub](https://github.com/) with:
 
 ``` r

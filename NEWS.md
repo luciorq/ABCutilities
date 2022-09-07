@@ -1,8 +1,9 @@
 # ABCutilities
 
-## ABCutilities v0.3.3 (Development version)
+## ABCutilities v0.3.3 (Release date: 2022-08-29)
 
 * Fork from original package
+* Add GitHub as main mirror
 
 ## ABCutilities v0.3.2 (Release date: 2019-08-27)
 
@@ -12,7 +13,7 @@
 ## ABCutilities v0.3.1 (Release date: 2019-07-19)
 
 * ggplot2 helpers: added a function to modify the background color
-of facet grid strips (color_grid_facet_bg)
+of facet grid strips (`color_grid_facet_bg`)
 
 ## ABCutilities v0.3.0 (Release date: 2019-01-13)
 
@@ -22,24 +23,23 @@ which tends to make more sense for scRNA-seq dimensionality reduction plots
 ## ABCutilities v0.2.9 (Release date: 2018-11-28)
 
 * added perl script for automated submission to GOrilla
-  * R wrapper: submit_to_gorilla()
-  * high level wrapper for both GOrilla and REVIGO: GOenrichment_GOrilla_REVIGO()
+  * R wrapper: `submit_to_gorilla()`
+  * high level wrapper for both GOrilla and REVIGO: `GOenrichment_GOrilla_REVIGO()`
 
 ## ABCutilities v0.2.8 (Release date: 2018-10-15)
 
 * added perl script for automated submission to GOrilla
-  * R wrapper: submit_to_gorilla()
-  * high level wrapper for both GOrilla and REVIGO: GOenrichment_GOrilla_REVIGO()
+  * R wrapper: `submit_to_gorilla()`
+  * high level wrapper for both GOrilla and REVIGO: `GOenrichment_GOrilla_REVIGO()`
 
 ## ABCutilities v0.2.6 (Release date: 2018-09-07)
 
-* changed order and content of paired_pal palette
+* changed order and content of `paired_pal` palette
 
 ## ABCutilities v0.2.6 (Release date: 2018-08-22)
 
-* added `quantile_breaks()` function from Kamil Slowikowski to adjust
-pheatmap color schemes if needed
-* added Gorilla2REVIGO function for automated submission of GOrilla results to REVIGO
+* added `quantile_breaks()` function from Kamil Slowikowski to adjust pheatmap color schemes if needed
+* added `Gorilla2REVIGO()` function for automated submission of GOrilla results to REVIGO
 
 ## ABCutilities v.0.2.4
 
