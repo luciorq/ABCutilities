@@ -62,6 +62,7 @@ SEXP fit_linear_model_internal (SEXP qr, SEXP qraux, SEXP inmat, SEXP subset, SE
     }
 }
 
+// [[Rcpp::export]]
 SEXP fit_linear_model (SEXP qr, SEXP qraux, SEXP exprs, SEXP subset, SEXP get_coefs) {
     BEGIN_RCPP
     int rtype=beachmat::find_sexp_type(exprs);
