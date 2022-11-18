@@ -1,10 +1,11 @@
-#include "run_dormqr.h"
+#include "run_dormqr.hpp"
 
 #include "R_ext/BLAS.h"
 #include "R_ext/Lapack.h"
 
 #include <stdexcept>
 
+// [[Rccp::export]]
 run_dormqr::run_dormqr(SEXP qr, SEXP qraux, const char tr) :
         QR(qr), AUX(qraux), qrptr(NULL), qxptr(NULL),
         nobs(QR.nrow()), ncoef(QR.ncol()), ncol(1),

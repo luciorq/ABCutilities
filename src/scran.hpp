@@ -1,11 +1,11 @@
-#ifndef SCRAN_H
-#define SCRAN_H
+#ifndef __SCRAN__
+#define __SCRAN__
 
 #include "Rcpp.h"
 
 extern "C" {
 
-// Normalization.
+/* Normalization.
 
 SEXP pool_size_factors(SEXP, SEXP, SEXP, SEXP);
 
@@ -34,9 +34,7 @@ SEXP test_shuffle_vector(SEXP, SEXP, SEXP, SEXP);
 SEXP test_shuffle_matrix(SEXP, SEXP, SEXP);
 
 // Variance calculations.
-
 SEXP fit_linear_model(SEXP, SEXP, SEXP, SEXP, SEXP);
-
 SEXP fit_oneway(SEXP, SEXP, SEXP);
 
 SEXP calc_log_count_stats(SEXP, SEXP, SEXP, SEXP, SEXP);
@@ -66,7 +64,7 @@ SEXP get_residuals(SEXP, SEXP, SEXP, SEXP, SEXP);
 SEXP compute_CV2(SEXP, SEXP, SEXP, SEXP);
 
 SEXP shuffle_matrix(SEXP, SEXP, SEXP);
-
+*/
 }
 
-#endif
+#endif // __SCRAN__

@@ -1,7 +1,5 @@
-#ifndef UTILS_H
-#define UTILS_H
-
-#include "Rcpp.h"
+#ifndef __UTILS__
+#define __UTILS__
 
 // Check subset vector.
 
@@ -20,4 +18,4 @@ double check_numeric_scalar(Rcpp::RObject, const char*);
 
 bool check_logical_scalar(Rcpp::RObject, const char*);
 
-#endif
+#endif // __UTILS_

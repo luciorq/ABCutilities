@@ -1,6 +1,7 @@
-#include "utils.h"
-
+#include <Rcpp.h>
+using namespace Rcpp;
 #include <stdexcept>
+#include "utils.hpp"
 
 Rcpp::IntegerVector check_subset_vector(SEXP subvec, size_t len) {
     Rcpp::IntegerVector sout(subvec);
