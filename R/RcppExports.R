@@ -3,5 +3,5 @@
 
 #' @export
 fit_linear_model <- function(qr, qraux, exprs, subset, get_coefs) {
-    .Call("_ABCutilities_fit_linear_model", qr, qraux, exprs, subset, get_coefs)
+    .Call("_ABCutilities_fit_linear_model", PACKAGE = "ABCutilities", qr, qraux, exprs, subset, get_coefs)
 }
