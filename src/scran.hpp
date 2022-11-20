@@ -1,7 +1,7 @@
 #ifndef __SCRAN__
 #define __SCRAN__
 
-#include "Rcpp.h"
+#include <Rcpp.h>
 
 extern "C" {
 

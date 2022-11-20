@@ -2,5 +2,5 @@
 # Generator token: 10BE3573-1514-4C36-9D1C-5A225CD40393
 
 fit_linear_model <- function(qr, qraux, exprs, subset, get_coefs) {
-    .Call(`_ABCutilities_fit_linear_model`, qr, qraux, exprs, subset, get_coefs)
+    .Call("_ABCutilities_fit_linear_model", PACKAGE = "ABCutilities", qr, qraux, exprs, subset, get_coefs)
 }

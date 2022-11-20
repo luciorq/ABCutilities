@@ -1,7 +1,7 @@
 #ifndef RUN_DORMQR_H
 #define RUN_DORMQR_H
 
-#include "Rcpp.h"
+#include <Rcpp.h>
 
 // Class to run Qy or QtY multiplications.
 

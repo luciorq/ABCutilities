@@ -1,6 +1,10 @@
 #ifndef __UTILS__
 #define __UTILS__
 
+#include <Rcpp.h>
+using namespace Rcpp;
+
+
 // Check subset vector.
 
 Rcpp::IntegerVector check_subset_vector(SEXP, size_t);
