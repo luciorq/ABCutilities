@@ -1,7 +1,7 @@
 Type: Package
 Package: ABCutilities
 Title: Generally useful functions used by multiple ABC packages
-Version: 0.3.5
+Version: 0.3.6
 Authors@R: c(
     person("Applied Bioinformatics Core", "Weill Cornell Medicine", , "abc@med.cornell.edu", role = c("aut", "cre")),
     person("Lucio", "Rezende Queiroz", , "luciorqueiroz@gmail.com", role = "ctb",
