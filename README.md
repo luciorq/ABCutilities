@@ -17,9 +17,9 @@ The recommended way to install this package is through the R-Universe repository
 
 ``` r
 install.packages(
-   "ABCutilities",
-   repos = c(
-    luciorq = "https://luciorq.r-universe.dev",
+  "ABCutilities",
+  repos = c(
+    marchionnilab = "https://marchionnilab.r-universe.dev",
     getOption("repos")
   )
 )

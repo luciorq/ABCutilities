@@ -8,8 +8,7 @@ Authors@R: c(
            comment = c(ORCID = "0000-0002-6090-1834"))
   )
 Author: Applied Bioinformatics Core of Weill Cornell Medicine [aut, cre]
-Maintainer: Friederike Duendar <frd2007@med.cornell.edu>, Paul Zumbo
-    <paz2005@med.cornell.edu>
+Maintainer: Lucio Rezende Queiroz <luciorqueiroz@gmail.com>
 Description: Functions for error checking and other useful things,
     including numerous helper functions for our shiny apps.
 License: MIT + file LICENSE
