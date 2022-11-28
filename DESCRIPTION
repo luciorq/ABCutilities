@@ -31,3 +31,5 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.2
 LinkingTo:
     Rcpp
+URL: https://github.com/marchionniLab/ABCutilities
+BugReports: https://github.com/marchionniLab/ABCutilities/issues
